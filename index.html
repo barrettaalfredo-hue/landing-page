@@ -19,7 +19,6 @@
       --blue-dark: #2563EB;
       --text:      #F1F5F9;
       --muted:     #94A3B8;
-      --red:       #EF4444;
     }
 
     html { scroll-behavior: smooth; }
@@ -31,6 +30,10 @@
       line-height: 1.7;
       font-size: 16px;
     }
+
+    /* ── LANGUAGE TOGGLE ── */
+    body.sv [data-en] { display: none !important; }
+    body.en [data-sv] { display: none !important; }
 
     /* ── NAV ── */
     nav {
@@ -45,6 +48,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 1rem;
     }
 
     .nav-brand {
@@ -53,7 +57,30 @@
       letter-spacing: 0.08em;
       color: var(--text);
       text-transform: uppercase;
+      flex-shrink: 0;
     }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .lang-btn {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      transition: border-color 0.2s, color 0.2s;
+      flex-shrink: 0;
+    }
+    .lang-btn:hover { border-color: var(--blue); color: var(--text); }
 
     .nav-cta {
       background: var(--blue);
@@ -67,6 +94,7 @@
       cursor: pointer;
       text-decoration: none;
       transition: background 0.2s;
+      flex-shrink: 0;
     }
     .nav-cta:hover { background: var(--blue-dark); }
 
@@ -119,16 +147,10 @@
     }
     .btn:hover { background: var(--blue-dark); transform: translateY(-1px); }
 
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border);
-    }
+    .divider { border: none; border-top: 1px solid var(--border); }
 
     /* ── HERO ── */
-    #hero {
-      padding-top: 96px;
-      padding-bottom: 80px;
-    }
+    #hero { padding-top: 96px; padding-bottom: 80px; }
 
     .promise-badge {
       display: inline-flex;
@@ -162,21 +184,9 @@
       padding: 1.5rem;
     }
 
-    .problem-icon {
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .problem-card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-    }
-
-    .problem-card p {
-      font-size: 0.875rem;
-      color: var(--muted);
-    }
+    .problem-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .problem-card p { font-size: 0.875rem; color: var(--muted); }
 
     /* ── SOLUTION ── */
     .questions-grid {
@@ -192,7 +202,6 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1.5rem;
-      position: relative;
     }
 
     .q-number {
@@ -204,18 +213,9 @@
       margin-bottom: 0.5rem;
     }
 
-    .q-card h3 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-    }
+    .q-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .q-card p  { font-size: 0.8rem; color: var(--muted); }
 
-    .q-card p {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    /* show / not show */
     .show-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -245,12 +245,7 @@
     .show-col.yes .show-col-title { color: #34D399; }
     .show-col.no  .show-col-title { color: #F87171; }
 
-    .show-col ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
+    .show-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
 
     .show-col ul li {
       display: flex;
@@ -260,24 +255,13 @@
       color: var(--muted);
     }
 
-    .show-col ul li::before {
-      flex-shrink: 0;
-      font-size: 0.8rem;
-      margin-top: 2px;
-    }
-
+    .show-col ul li::before { flex-shrink: 0; font-size: 0.8rem; margin-top: 2px; }
     .show-col.yes ul li::before { content: "✓"; color: #34D399; }
     .show-col.no  ul li::before { content: "✕"; color: #F87171; }
 
     /* ── CTA SECTION ── */
-    #contact {
-      background: var(--bg-card2);
-      text-align: center;
-    }
-
-    #contact .container {
-      max-width: 680px;
-    }
+    #contact { background: var(--bg-card2); text-align: center; }
+    #contact .container { max-width: 680px; }
 
     .email-display {
       display: inline-flex;
@@ -290,21 +274,12 @@
       font-size: 0.95rem;
       color: var(--muted);
       margin: 1.5rem 0;
-      font-family: 'Inter', monospace;
     }
 
-    .email-display a {
-      color: var(--blue);
-      text-decoration: none;
-      font-weight: 600;
-    }
+    .email-display a { color: var(--blue); text-decoration: none; font-weight: 600; }
     .email-display a:hover { text-decoration: underline; }
 
-    .contact-note {
-      font-size: 0.875rem;
-      color: var(--muted);
-      margin-top: 1rem;
-    }
+    .contact-note { font-size: 0.875rem; color: var(--muted); margin-top: 1rem; }
 
     /* ── FOOTER ── */
     footer {
@@ -323,39 +298,50 @@
       margin-right: auto;
     }
 
-    .footer-copy {
-      font-size: 0.75rem;
-      color: #334155;
-      letter-spacing: 0.05em;
-    }
+    .footer-copy { font-size: 0.75rem; color: #334155; letter-spacing: 0.05em; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 480px) {
       section { padding: 60px 6%; }
       nav { padding: 0 6%; }
       .questions-grid { grid-template-columns: 1fr 1fr; }
+      .nav-cta { display: none; }
     }
   </style>
 </head>
-<body>
+<body class="sv">
 
   <!-- NAV -->
   <nav>
     <span class="nav-brand">Nordant</span>
-    <a href="#contact" class="nav-cta">Bli testare / Become a tester</a>
+    <div class="nav-right">
+      <button class="lang-btn" onclick="toggleLang()" id="lang-btn">EN</button>
+      <a href="#contact" class="nav-cta">
+        <span data-sv>Bli testare</span>
+        <span data-en>Become a tester</span>
+      </a>
+    </div>
   </nav>
 
   <!-- HERO -->
   <section id="hero">
     <div class="container">
-      <div class="promise-badge">Early Access &mdash; Gratis / Free</div>
-      <h1>En aktie. Fyra svar.<br/>Inga distraktioner.</h1>
+      <div class="promise-badge">
+        <span data-sv>Early Access &mdash; Gratis</span>
+        <span data-en>Early Access &mdash; Free</span>
+      </div>
+      <h1>
+        <span data-sv>En aktie. Fyra svar.<br/>Inga distraktioner.</span>
+        <span data-en>One stock. Four answers.<br/>No noise.</span>
+      </h1>
       <p class="lead">
-        <strong style="color:var(--text)">One stock. Four answers. No noise.</strong><br/>
-        Förstå en aktie bättre på 60 sekunder än på 30 minuter på egen hand.<br/>
-        <em style="color:var(--muted)">Understand a stock better in 60 seconds than in 30 minutes on your own.</em>
+        <span data-sv>Förstå en aktie bättre på 60 sekunder än på 30 minuter på egen hand.</span>
+        <span data-en>Understand a stock better in 60 seconds than in 30 minutes on your own.</span>
       </p>
-      <a href="#contact" class="btn">Anmäl intresse &rarr;</a>
+      <a href="#contact" class="btn">
+        <span data-sv>Anmäl intresse &rarr;</span>
+        <span data-en>Express interest &rarr;</span>
+      </a>
     </div>
   </section>
 
@@ -364,27 +350,52 @@
   <!-- PROBLEM -->
   <section id="problem">
     <div class="container">
-      <span class="tag">Problemet / The Problem</span>
-      <h2>Det finns inte för lite information.<br/>Det finns för mycket.</h2>
+      <span class="tag">
+        <span data-sv>Problemet</span>
+        <span data-en>The Problem</span>
+      </span>
+      <h2>
+        <span data-sv>Det finns inte för lite information.<br/>Det finns för mycket.</span>
+        <span data-en>There isn't too little information.<br/>There is too much.</span>
+      </h2>
       <p class="lead" style="margin-top:0.75rem">
-        There is not too little information about stocks. There is too much.
+        <span data-sv>Problemet är inte att det finns för lite information om aktier — det finns för mycket. Nyheter, analyser, Reddit-trådar, motstridiga åsikter — allt pockar på uppmärksamhet.</span>
+        <span data-en>The problem is not that there is too little information about stocks — there is too much. News, analysis, Reddit threads, conflicting opinions — all competing for your attention.</span>
       </p>
 
       <div class="problem-grid">
         <div class="problem-card">
           <div class="problem-icon">🌊</div>
-          <h3>Informationsöverflöd</h3>
-          <p>Nyheter, analyser, Reddit, chart-mönster — allt pockar på uppmärksamhet samtidigt.<br/><em>News, analysis, Reddit, chart patterns — all competing for attention at once.</em></p>
+          <h3>
+            <span data-sv>Informationsöverflöd</span>
+            <span data-en>Information overload</span>
+          </h3>
+          <p>
+            <span data-sv>Nyheter, analyser, Reddit, chart-mönster — allt pockar på uppmärksamhet samtidigt.</span>
+            <span data-en>News, analysis, Reddit, chart patterns — all competing for attention at once.</span>
+          </p>
         </div>
         <div class="problem-card">
           <div class="problem-icon">⚡</div>
-          <h3>Motstridiga signaler</h3>
-          <p>En analytiker säger köp, en annan säger sälj. Ingen förklaring du kan verifiera.<br/><em>One analyst says buy, another says sell. No explanation you can verify.</em></p>
+          <h3>
+            <span data-sv>Motstridiga signaler</span>
+            <span data-en>Conflicting signals</span>
+          </h3>
+          <p>
+            <span data-sv>En analytiker säger köp, en annan säger sälj. Ingen förklaring du kan verifiera.</span>
+            <span data-en>One analyst says buy, another says sell. No explanation you can verify.</span>
+          </p>
         </div>
         <div class="problem-card">
           <div class="problem-icon">⏳</div>
-          <h3>Beslut skjuts upp</h3>
-          <p>Resultatet är att folk antingen fattar beslut på fel grund — eller skjuter upp dem helt.<br/><em>The result: decisions made on the wrong basis, or not made at all.</em></p>
+          <h3>
+            <span data-sv>Beslut skjuts upp</span>
+            <span data-en>Decisions get delayed</span>
+          </h3>
+          <p>
+            <span data-sv>Resultatet är att folk antingen fattar beslut på fel grund — eller skjuter upp dem helt.</span>
+            <span data-en>The result: decisions made on the wrong basis, or not made at all.</span>
+          </p>
         </div>
       </div>
     </div>
@@ -393,58 +404,81 @@
   <!-- SOLUTION -->
   <section id="solution">
     <div class="container">
-      <span class="tag">Lösningen / The Solution</span>
-      <h2>En fast struktur.<br/>Varje gång.</h2>
+      <span class="tag">
+        <span data-sv>Lösningen</span>
+        <span data-en>The Solution</span>
+      </span>
+      <h2>
+        <span data-sv>En fast struktur.<br/>Varje gång.</span>
+        <span data-en>A fixed structure.<br/>Every time.</span>
+      </h2>
       <p class="lead" style="margin-top:0.75rem">
-        Sök på en aktie — få svar på fyra frågor, inget mer, inget mindre.<br/>
-        <em>Search a stock — get answers to four questions, nothing more, nothing less.</em>
+        <span data-sv>Sök på en aktie — få svar på fyra frågor, inget mer, inget mindre.</span>
+        <span data-en>Search a stock — get answers to four questions, nothing more, nothing less.</span>
       </p>
 
       <div class="questions-grid">
         <div class="q-card">
           <div class="q-number">01</div>
-          <h3>Vad är viktigt nu?</h3>
-          <p><em>What matters right now?</em></p>
+          <h3>
+            <span data-sv>Vad är viktigt nu?</span>
+            <span data-en>What matters right now?</span>
+          </h3>
         </div>
         <div class="q-card">
           <div class="q-number">02</div>
-          <h3>Vad driver aktien?</h3>
-          <p><em>What is driving the stock?</em></p>
+          <h3>
+            <span data-sv>Vad driver aktien?</span>
+            <span data-en>What is driving the stock?</span>
+          </h3>
         </div>
         <div class="q-card">
           <div class="q-number">03</div>
-          <h3>Kort- vs. långsiktigt?</h3>
-          <p><em>Short-term vs. long-term?</em></p>
+          <h3>
+            <span data-sv>Kort- vs. långsiktigt?</span>
+            <span data-en>Short-term vs. long-term?</span>
+          </h3>
         </div>
         <div class="q-card">
           <div class="q-number">04</div>
-          <h3>Vad är slutsatsen?</h3>
-          <p><em>What is the conclusion?</em></p>
+          <h3>
+            <span data-sv>Vad är slutsatsen?</span>
+            <span data-en>What is the conclusion?</span>
+          </h3>
         </div>
       </div>
 
-      <span class="tag">Vad vi visar / What we show</span>
+      <span class="tag">
+        <span data-sv>Vad vi visar</span>
+        <span data-en>What we show</span>
+      </span>
       <div class="show-grid">
         <div class="show-col yes">
-          <div class="show-col-title">Vi visar &mdash; We show</div>
+          <div class="show-col-title">
+            <span data-sv>Vi visar</span>
+            <span data-en>We show</span>
+          </div>
           <ul>
-            <li>Kvartalsrapporter / Earnings reports</li>
-            <li>Ledningsbyten / Leadership changes</li>
-            <li>Förvärv &amp; avyttringar / Acquisitions &amp; divestitures</li>
-            <li>Regulatoriska beslut / Regulatory decisions</li>
-            <li>Officiella bolagshändelser / Official company events</li>
-            <li>Länk till originalkällan / Link to original source</li>
+            <li><span data-sv>Kvartalsrapporter</span><span data-en>Earnings reports</span></li>
+            <li><span data-sv>Ledningsbyten</span><span data-en>Leadership changes</span></li>
+            <li><span data-sv>Förvärv &amp; avyttringar</span><span data-en>Acquisitions &amp; divestitures</span></li>
+            <li><span data-sv>Regulatoriska beslut</span><span data-en>Regulatory decisions</span></li>
+            <li><span data-sv>Officiella bolagshändelser</span><span data-en>Official company events</span></li>
+            <li><span data-sv>Länk till originalkällan</span><span data-en>Link to original source</span></li>
           </ul>
         </div>
         <div class="show-col no">
-          <div class="show-col-title">Vi visar inte &mdash; We don't show</div>
+          <div class="show-col-title">
+            <span data-sv>Vi visar inte</span>
+            <span data-en>We don't show</span>
+          </div>
           <ul>
-            <li>Chart-mönster / Chart patterns</li>
-            <li>Tekniska indikatorer / Technical indicators</li>
-            <li>Sociala medier / Social media</li>
-            <li>Analytikerspeculationer / Analyst speculation</li>
-            <li>Nyhetsflöden / News feeds</li>
-            <li>Brus / Noise</li>
+            <li><span data-sv>Chart-mönster</span><span data-en>Chart patterns</span></li>
+            <li><span data-sv>Tekniska indikatorer</span><span data-en>Technical indicators</span></li>
+            <li><span data-sv>Sociala medier</span><span data-en>Social media</span></li>
+            <li><span data-sv>Analytikerspeculationer</span><span data-en>Analyst speculation</span></li>
+            <li><span data-sv>Nyhetsflöden</span><span data-en>News feeds</span></li>
+            <li><span data-sv>Brus</span><span data-en>Noise</span></li>
           </ul>
         </div>
       </div>
@@ -456,41 +490,61 @@
   <!-- CTA / CONTACT -->
   <section id="contact">
     <div class="container">
-      <span class="tag">Vi söker testare / We're looking for testers</span>
-      <h2>Testa vår MVP — gratis.<br/>Test our MVP — for free.</h2>
+      <span class="tag">
+        <span data-sv>Vi söker testare</span>
+        <span data-en>We're looking for testers</span>
+      </span>
+      <h2>
+        <span data-sv>Testa vår MVP — gratis.</span>
+        <span data-en>Test our MVP — for free.</span>
+      </h2>
       <p class="lead" style="margin: 0.75rem auto 0; text-align:center">
-        Vi bygger Nordant och letar efter retail-investerare som vill vara med från start.<br/>
-        <em>We're building Nordant and looking for retail investors who want to be part of it from day one.</em>
+        <span data-sv>Vi bygger Nordant och letar efter retail-investerare som vill vara med från start. Tidig åtkomst är gratis — vi vill ha din feedback, inte dina pengar.</span>
+        <span data-en>We're building Nordant and looking for retail investors who want to be part of it from day one. Early access is free — we want your feedback, not your money.</span>
       </p>
 
       <div class="email-display">
         <span>✉</span>
-        <a href="mailto:info.alfredo.barretta@gmail.com?subject=MVP%20Tester%20%E2%80%94%20Intresserad&body=Hej%2C%0A%0AJag%20%C3%A4r%20intresserad%20av%20att%20testa%20Nordants%20MVP%20gratis.%0A%0A%5BBeskriv%20g%C3%A4rna%20kort%20hur%20du%20handlar%20aktier%20idag%5D%0A%0AMvh%2C">
+        <a href="mailto:info.alfredo.barretta@gmail.com?subject=MVP%20Tester%20%E2%80%94%20Intresserad&body=Hej%2C%0A%0AJag%20%C3%A4r%20intresserad%20av%20att%20testa%20Nordants%20MVP%20gratis.%0A%0AMvh%2C">
           info.alfredo.barretta@gmail.com
         </a>
       </div>
 
       <div style="margin-top:1.5rem">
-        <a href="mailto:info.alfredo.barretta@gmail.com?subject=MVP%20Tester%20%E2%80%94%20Intresserad&body=Hej%2C%0A%0AJag%20%C3%A4r%20intresserad%20av%20att%20testa%20Nordants%20MVP%20gratis.%0A%0A%5BBeskriv%20g%C3%A4rna%20kort%20hur%20du%20handlar%20aktier%20idag%5D%0A%0AMvh%2C" class="btn">
-          Skicka ett mail &rarr; / Send an email &rarr;
+        <a href="mailto:info.alfredo.barretta@gmail.com?subject=MVP%20Tester%20%E2%80%94%20Intresserad&body=Hej%2C%0A%0AJag%20%C3%A4r%20intresserad%20av%20att%20testa%20Nordants%20MVP%20gratis.%0A%0AMvh%2C" class="btn">
+          <span data-sv>Skicka ett mail &rarr;</span>
+          <span data-en>Send an email &rarr;</span>
         </a>
       </div>
-
-      <p class="contact-note">
-        Tidig åtkomst är gratis. Vi vill ha din feedback, inte dina pengar.<br/>
-        <em>Early access is free. We want your feedback, not your money.</em>
-      </p>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <p class="footer-vision">
-      "Stock pickers ska aldrig behöva drunkna i information för att fatta ett välgrundat beslut."<br/>
-      <em>"Stock pickers should never have to drown in information to make a well-founded decision."</em>
+      <span data-sv>"Stock pickers ska aldrig behöva drunkna i information för att fatta ett välgrundat beslut."</span>
+      <span data-en>"Stock pickers should never have to drown in information to make a well-founded decision."</span>
     </p>
     <p class="footer-copy">&copy; 2026 Nordant</p>
   </footer>
+
+  <script>
+    function toggleLang() {
+      const body = document.body;
+      const btn  = document.getElementById('lang-btn');
+      const html = document.documentElement;
+
+      if (body.classList.contains('sv')) {
+        body.classList.replace('sv', 'en');
+        html.lang = 'en';
+        btn.textContent = 'SV';
+      } else {
+        body.classList.replace('en', 'sv');
+        html.lang = 'sv';
+        btn.textContent = 'EN';
+      }
+    }
+  </script>
 
 </body>
 </html>

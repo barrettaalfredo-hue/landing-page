@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nordant — Klarhet för aktieplacerare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0A0F1E;
+      --bg-card:   #111827;
+      --bg-card2:  #0E1623;
+      --border:    #1E2D40;
+      --blue:      #3B82F6;
+      --blue-dark: #2563EB;
+      --text:      #F1F5F9;
+      --muted:     #94A3B8;
+      --red:       #EF4444;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 15, 30, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      text-transform: uppercase;
+    }
+
+    .nav-cta {
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      padding: 0.45rem 1.2rem;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--blue-dark); }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 5%; }
+    .container { max-width: 900px; margin: 0 auto; }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+
+    .lead {
+      font-size: 1.125rem;
+      color: var(--muted);
+      max-width: 620px;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      padding-top: 96px;
+      padding-bottom: 80px;
+    }
+
+    .promise-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #93C5FD;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── PROBLEM ── */
+    #problem { background: var(--bg-card2); }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .problem-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .problem-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .problem-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .problem-card p {
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    /* ── SOLUTION ── */
+    .questions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .q-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .q-number {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .q-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .q-card p {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* show / not show */
+    .show-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .show-grid { grid-template-columns: 1fr; }
+    }
+
+    .show-col {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .show-col-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .show-col.yes .show-col-title { color: #34D399; }
+    .show-col.no  .show-col-title { color: #F87171; }
+
+    .show-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .show-col ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .show-col ul li::before {
+      flex-shrink: 0;
+      font-size: 0.8rem;
+      margin-top: 2px;
+    }
+
+    .show-col.yes ul li::before { content: "✓"; color: #34D399; }
+    .show-col.no  ul li::before { content: "✕"; color: #F87171; }
+
+    /* ── CTA SECTION ── */
+    #contact {
+      background: var(--bg-card2);
+      text-align: center;
+    }
+
+    #contact .container {
+      max-width: 680px;
+    }
+
+    .email-display {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin: 1.5rem 0;
+      font-family: 'Inter', monospace;
+    }
+
+    .email-display a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .email-display a:hover { text-decoration: underline; }
+
+    .contact-note {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2.5rem 5%;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .footer-vision {
+      font-size: 0.875rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 0.75rem;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: #334155;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      section { padding: 60px 6%; }
+      nav { padding: 0 6%; }
+      .questions-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-brand">Nordant</span>
+    <a href="#contact" class="nav-cta">Bli testare / Become a tester</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="promise-badge">Early Access &mdash; Gratis / Free</div>
+      <h1>En aktie. Fyra svar.<br/>Inga distraktioner.</h1>
+      <p class="lead">
+        <strong style="color:var(--text)">One stock. Four answers. No noise.</strong><br/>
+        Förstå en aktie bättre på 60 sekunder än på 30 minuter på egen hand.<br/>
+        <em style="color:var(--muted)">Understand a stock better in 60 seconds than in 30 minutes on your own.</em>
+      </p>
+      <a href="#contact" class="btn">Anmäl intresse &rarr;</a>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PROBLEM -->
+  <section id="problem">
+    <div class="container">
+      <span class="tag">Problemet / The Problem</span>
+      <h2>Det finns inte för lite information.<br/>Det finns för mycket.</h2>
+      <p class="lead" style="margin-top:0.75rem">
+        There is not too little information about stocks. There is too much.
+      </p>
+
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-icon">🌊</div>
+          <h3>Informationsöverflöd</h3>
+          <p>Nyheter, analyser, Reddit, chart-mönster — allt pockar på uppmärksamhet samtidigt.<br/><em>News, analysis, Reddit, chart patterns — all competing for attention at once.</em></p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">⚡</div>
+          <h3>Motstridiga signaler</h3>
+          <p>En analytiker säger köp, en annan säger sälj. Ingen förklaring du kan verifiera.<br/><em>One analyst says buy, another says sell. No explanation you can verify.</em></p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">⏳</div>
+          <h3>Beslut skjuts upp</h3>
+          <p>Resultatet är att folk antingen fattar beslut på fel grund — eller skjuter upp dem helt.<br/><em>The result: decisions made on the wrong basis, or not made at all.</em></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section id="solution">
+    <div class="container">
+      <span class="tag">Lösningen / The Solution</span>
+      <h2>En fast struktur.<br/>Varje gång.</h2>
+      <p class="lead" style="margin-top:0.75rem">
+        Sök på en aktie — få svar på fyra frågor, inget mer, inget mindre.<br/>
+        <em>Search a stock — get answers to four questions, nothing more, nothing less.</em>
+      </p>
+
+      <div class="questions-grid">
+        <div class="q-card">
+          <div class="q-number">01</div>
+          <h3>Vad är viktigt nu?</h3>
+          <p><em>What matters right now?</em></p>
+        </div>
+        <div class="q-card">
+          <div class="q-number">02</div>
+          <h3>Vad driver aktien?</h3>
+          <p><em>What is driving the stock?</em></p>
+        </div>
+        <div class="q-card">
+          <div class="q-number">03</div>
+          <h3>Kort- vs. långsiktigt?</h3>
+          <p><em>Short-term vs. long-term?</em></p>
+        </div>
+        <div class="q-card">
+          <div class="q-number">04</div>
+          <h3>Vad är slutsatsen?</h3>
+          <p><em>What is the conclusion?</em></p>
+        </div>
+      </div>
+
+      <span class="tag">Vad vi visar / What we show</span>
+      <div class="show-grid">
+        <div class="show-col yes">
+          <div class="show-col-title">Vi visar &mdash; We show</div>
+          <ul>
+            <li>Kvartalsrapporter / Earnings reports</li>
+            <li>Ledningsbyten / Leadership changes</li>
+            <li>Förvärv &amp; avyttringar / Acquisitions &amp; divestitures</li>
+            <li>Regulatoriska beslut / Regulatory decisions</li>
+            <li>Officiella bolagshändelser / Official company events</li>
+            <li>Länk till originalkällan / Link to original source</li>
+          </ul>
+        </div>
+        <div class="show-col no">
+          <div class="show-col-title">Vi visar inte &mdash; We don't show</div>
+          <ul>
+            <li>Chart-mönster / Chart patterns</li>
+            <li>Tekniska indikatorer / Technical indicators</li>
+            <li>Sociala medier / Social media</li>
+            <li>Analytikerspeculationer / Analyst speculation</li>
+            <li>Nyhetsflöden / News feeds</li>
+            <li>Brus / Noise</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CTA / CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <span class="tag">Vi söker testare / We're looking for testers</span>
+      <h2>Testa vår MVP — gratis.<br/>Test our MVP — for free.</h2>
+      <p class="lead" style="margin: 0.75rem auto 0; text-align:center">
+        Vi bygger Nordant och letar efter retail-investerare som vill vara med från start.<br/>
+        <em>We're building Nordant and looking for retail investors who want to be part of it from day one.</em>
+      </p>
+
+      <div class="email-display">
+        <span>✉</span>
+        <a href="mailto:info.alfredo.barretta@gmail.com?subject=MVP%20Tester%20%E2%80%94%20Intresserad&body=Hej%2C%0A%0AJag%20%C3%A4r%20intresserad%20av%20att%20testa%20Nordants%20MVP%20gratis.%0A%0A%5BBeskriv%20g%C3%A4rna%20kort%20hur%20du%20handlar%20aktier%20idag%5D%0A%0AMvh%2C">
+          info.alfredo.barretta@gmail.com
+        </a>
+      </div>
+
+      <div style="margin-top:1.5rem">
+        <a href="mailto:info.alfredo.barretta@gmail.com?subject=MVP%20Tester%20%E2%80%94%20Intresserad&body=Hej%2C%0A%0AJag%20%C3%A4r%20intresserad%20av%20att%20testa%20Nordants%20MVP%20gratis.%0A%0A%5BBeskriv%20g%C3%A4rna%20kort%20hur%20du%20handlar%20aktier%20idag%5D%0A%0AMvh%2C" class="btn">
+          Skicka ett mail &rarr; / Send an email &rarr;
+        </a>
+      </div>
+
+      <p class="contact-note">
+        Tidig åtkomst är gratis. Vi vill ha din feedback, inte dina pengar.<br/>
+        <em>Early access is free. We want your feedback, not your money.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-vision">
+      "Stock pickers ska aldrig behöva drunkna i information för att fatta ett välgrundat beslut."<br/>
+      <em>"Stock pickers should never have to drown in information to make a well-founded decision."</em>
+    </p>
+    <p class="footer-copy">&copy; 2026 Nordant</p>
+  </footer>
+
+</body>
+</html>
